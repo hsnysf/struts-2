@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.custom.i18n.resources" value="global" />
+	<constant name="struts.convention.default.parent.package" value="default" />
+	<constant name="struts.multipart.maxSize" value="50000000" />
+	
+	<constant name="struts.xwork.chaining.copyErrors" value="true"/>
+	<constant name="struts.xwork.chaining.copyFieldErrors" value="true"/>
+	<constant name="struts.xwork.chaining.copyMessages" value="true"/>
+
+	<package name="default" namespace="/" extends="struts-default">
+		
+		<result-types>
+  			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"/>
+		</result-types>
+		
+		<interceptors>
+ 		<interceptor-stack name="appDefault">
+        	 <interceptor-ref name="defaultStack">
+      			<param name="exception.logEnabled">true</param>
+      			<param name="exception.logLevel">ERROR</param>
+   			</interceptor-ref>
+ 	    </interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="appDefault" />
+		
+		<global-results>
+			<result name="offense" type="dispatcher">/offense.jsp</result>
+			<result name="error" type="dispatcher">/error.jsp</result>
+			<result name="layout" type="tiles">layout</result>
+		</global-results>
+		
+		<global-exception-mappings>
+			<exception-mapping result="offense" exception="jee.web.learn.exception.OffenseException" />
+			<exception-mapping result="error" exception="java.lang.RuntimeException" />
+		</global-exception-mappings>
+		
+		<action name="home" class="jee.web.learn.action.HomeAction">
+			<result name="home" type="dispatcher">/home.jsp</result>
+		</action>
+		
+		<!-- <action name="new-visa" class="jee.web.learn.action.NewVisaAction">
+			<exception-mapping result="offense" exception="jee.web.learn.exception.OffenseException" />
+			<exception-mapping result="error" exception="java.lang.RuntimeException" />
+			<result name="offense">/offense.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action> -->
+		
+	</package>
+
+</struts>

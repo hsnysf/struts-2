@@ -1,0 +1,88 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"
+    "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+	<validator type="requiredstring">
+		<param name="fieldName">workPermit.cpr</param>
+		<!-- <message>CPR is required</message> -->
+		<message key="work.permit.cpr.required" />
+	</validator>
+	<validator type="regex">
+		<param name="fieldName">workPermit.cpr</param>
+		<param name="regex"><![CDATA[\d{9}]]></param>
+		<!-- <message>CPR should be 9 digits</message> -->
+		<message key="work.permit.cpr.length" />
+	</validator>
+	<validator type="requiredstring">
+		<param name="fieldName">workPermit.name</param>
+		<!-- <message>Name is required.</message> -->
+		<message key="work.permit.name.required" />
+	</validator>
+	<!-- <validator type="requiredstring">
+		<param name="fieldName">workPermit.mobile</param>
+		<message>Mobile is required.</message>
+	</validator> -->
+	<field name="workPermit.mobile">
+		<field-validator type="required">
+			<!-- <message>Mobile is required.</message> -->
+			<message key="work.permit.mobile.required" />
+		</field-validator>
+		<field-validator type="regex">
+			<param name="regex"><![CDATA[\d{8}]]></param>
+			<!-- <message>Mobile should be 8 digits</message> -->
+			<message key="work.permit.mobile.length" />
+		</field-validator>
+	</field>
+	<validator type="requiredstring">
+		<param name="fieldName">workPermit.email</param>
+		<!-- <message>Email address is required.</message> -->
+		<message key="work.permit.email.required" />
+	</validator>
+	<validator type="email">
+		<param name="fieldName">workPermit.email</param>
+		<!-- <message>Email Address is invalid.</message> -->
+		<message key="work.permit.email.invalid" />
+	</validator>
+	<validator type="requiredstring">
+		<param name="fieldName">workPermit.gender</param>
+		<!-- <message>Gender is required.</message> -->
+		<message key="work.permit.gender.required" />
+	</validator>
+	<!-- <validator type="required">
+		<param name="fieldName">workPermit.age</param>
+		<message>Age is required.</message>
+	</validator> -->
+	<field name="workPermit.age">
+		<field-validator type="required">
+			<!-- <message>Age is required.</message> -->
+			<message key="work.permit.age.required" />
+		</field-validator>
+		<field-validator type="int">
+			<param name="min">1</param>
+			<param name="max">120</param>
+			<!-- <message>Age must be from ${min} to ${max}</message> -->
+			<message key="work.permit.age.between" />
+		</field-validator>
+	</field>
+	<validator type="requiredstring">
+		<param name="fieldName">workPermit.url</param>
+		<!-- <message>URL is required.</message> -->
+		<message key="work.permit.url.required" />
+	</validator>
+	<validator type="regex">
+		<param name="fieldName">workPermit.url</param>
+		<param name="regex"><![CDATA[((http?|https|ftp|file)://)?((W|w){3}.)?[a-zA-Z0-9]+\.[a-zA-Z]+]]></param>
+		<!-- <message>URL is invalid.</message> -->
+		<message key="work.permit.url.invalid" />
+	</validator>
+	<validator type="requiredstring">
+		<param name="fieldName">workPermit.serviceType</param>
+		<!-- <message>Service Type is required.</message> -->
+		<message key="work.permit.service.type.required" />
+	</validator>
+	<validator type="fieldexpression">
+		<param name="fieldName">workPermit.communications</param>
+		<param name="expression"><![CDATA[workPermit.communications.size() > 0]]></param>
+		<!-- <message>You must select at least one communication.</message> -->
+		<message key="work.permit.communications.required" />
+	</validator>
+</validators>
