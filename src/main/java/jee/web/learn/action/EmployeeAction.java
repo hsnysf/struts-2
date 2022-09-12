@@ -313,7 +313,7 @@ public class EmployeeAction extends ActionSupport implements Preparable {
 			getText("employee.supervisor"), 
 			getText("employee.manager"));
 		
-		name = "Ali";
+		//name = "Ali";
 		age = 30;
 		salary = 300.54;
 		highPerformance = true;
@@ -349,5 +349,18 @@ public class EmployeeAction extends ActionSupport implements Preparable {
 		}
 
 		return SUCCESS;
+	}
+
+	@Override
+	public String toString() {
+		return "[name=" + name + ", age=" + age + ", salary=" + salary + ", highPerformance="
+				+ highPerformance + ", diseases=" + diseases + ", skills=" + skills + ", skillList=" + skillList
+				+ ", gender=" + gender + ", department=" + department + ", departments=" + departments + ", leave="
+				+ leave + ", role=" + role + ", roles=" + roles + ", hobbies=" + hobbies + ", profile=" + profile
+				+ ", password=" + password + ", passport=" + passport + ", passportFileName=" + passportFileName
+				+ ", passportContentType=" + passportContentType + ", passportContent=" + passportContent
+				+ ", certificates=" + certificates + ", certificatesFileName=" + certificatesFileName
+				+ ", certificatesContentType=" + certificatesContentType + ", certificatesContent="
+				+ certificatesContent + "]";
 	}
 }
